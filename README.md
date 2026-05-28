@@ -36,7 +36,7 @@ Document production helpdesk troubleshooting scenarios for Windows, networking, 
 **Problem:** User unable to access the internet despite showing as "Connected."
 
 **Investigation:**
-- Verified physical connectivity — cable seated, switch port active
+- Verified physical connectivity : cable seated, switch port active
 - Ran `ipconfig /all` : device showed APIPA address (169.254.x.x), confirming no valid DHCP lease
 - Pinged gateway — timed out, confirming network layer failure
 - Confirmed DHCP server was temporarily unreachable during lease renewal window

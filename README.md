@@ -1,5 +1,5 @@
 ## Objective
-Document production helpdesk troubleshooting scenarios for Windows, networking, Linux, and user support — demonstrating the diagnostic methodology, root cause analysis, and remediation process used in enterprise IT environments.
+Document production helpdesk troubleshooting scenarios for Windows, networking, Linux, and user support ; demonstrating the diagnostic methodology, root cause analysis, and remediation process used in enterprise IT environments.
 
 **Environment:** Simulated multi-user production environment | Windows 10/11, Active Directory, ServiceNow
 
@@ -13,18 +13,18 @@ Document production helpdesk troubleshooting scenarios for Windows, networking, 
 - Device shows network connection as "Connected"
 
 ### Tools Used
-- `ipconfig` — check IP address, subnet mask, default gateway, DNS
-- `ping` — test connectivity to gateway and external hosts (8.8.8.8)
-- `nslookup` — verify DNS resolution is working
-- `traceroute` / `tracert` — identify where packets are dropping
+- `ipconfig` : check IP address, subnet mask, default gateway, DNS
+- `ping` : test connectivity to gateway and external hosts (8.8.8.8)
+- `nslookup` : verify DNS resolution is working
+- `traceroute` / `tracert` : identify where packets are dropping
 - Windows Network Settings / Network Troubleshooter
 
 ### Troubleshooting Steps
-1. Run `ipconfig /all` — confirm device has a valid IP (not 169.254.x.x APIPA)
-2. Run `ping 127.0.0.1` — verify local TCP/IP stack is functional
-3. Run `ping <default gateway>` — test connectivity to router
-4. Run `ping 8.8.8.8` — test external IP connectivity (bypasses DNS)
-5. Run `nslookup google.com` — test DNS resolution
+1. Run `ipconfig /all` : confirm device has a valid IP (not 169.254.x.x APIPA)
+2. Run `ping 127.0.0.1` : verify local TCP/IP stack is functional
+3. Run `ping <default gateway>` : test connectivity to router
+4. Run `ping 8.8.8.8` : test external IP connectivity (bypasses DNS)
+5. Run `nslookup google.com` : test DNS resolution
 6. If DNS fails, set DNS manually to 8.8.8.8 or 1.1.1.1 to isolate the issue
 7. Run `ipconfig /release` then `ipconfig /renew` to refresh DHCP lease
 8. Run `netsh winsock reset` if all above pass but browser still fails
@@ -37,7 +37,7 @@ Document production helpdesk troubleshooting scenarios for Windows, networking, 
 
 **Investigation:**
 - Verified physical connectivity — cable seated, switch port active
-- Ran `ipconfig /all` — device showed APIPA address (169.254.x.x), confirming no valid DHCP lease
+- Ran `ipconfig /all` : device showed APIPA address (169.254.x.x), confirming no valid DHCP lease
 - Pinged gateway — timed out, confirming network layer failure
 - Confirmed DHCP server was temporarily unreachable during lease renewal window
 
@@ -103,8 +103,8 @@ Successful network connectivity does not always guarantee successful DNS resolut
 
 ### Troubleshooting Steps
 1. Confirm the shared path is correct — ask user for exact path they are using
-2. Run `ping <server hostname>` — verify network connectivity to file server
-3. Run `nslookup <server hostname>` — confirm DNS is resolving correctly
+2. Run `ping <server hostname>` : verify network connectivity to file server
+3. Run `nslookup <server hostname>` : confirm DNS is resolving correctly
 4. Try accessing the share via IP address instead of hostname — isolates DNS vs. access issue
 5. Check Windows Credential Manager — remove stale/cached credentials for the server
 6. Verify user is still a member of the correct AD security group (Active Directory Users and Computers)

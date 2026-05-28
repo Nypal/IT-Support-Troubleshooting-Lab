@@ -1,13 +1,3 @@
-# IT Support Troubleshooting Lab
-
-## Role Alignment
-This lab aligns with IT Support Engineer / OpsTech IT responsibilities, including:
-- Network troubleshooting - DNS, DHCP, TCP/IP diagnostics
-- Root Cause Analysis
-- Incident documentation
-- High-availability user support
-- ServiceNow-style ticket handling
-
 ## Objective
 Document production helpdesk troubleshooting scenarios for Windows, networking, Linux, and user support — demonstrating the diagnostic methodology, root cause analysis, and remediation process used in enterprise IT environments.
 
@@ -58,7 +48,41 @@ Document production helpdesk troubleshooting scenarios for Windows, networking, 
 **Preventive Action:** Documented DHCP lease duration settings and verified DHCP scope had sufficient available addresses. Logged incident and resolution in ServiceNow.
 
 ### Business Impact
-Failure to restore DHCP connectivity would prevent the user from accessing internal resources, email, and critical business applications — directly impacting operational productivity and ticket resolution timelines. Resolved within SLA window.
+
+### Additional DNS Observation
+
+During testing, ICMP connectivity to external IP addresses was successful using:
+
+```
+ping 8.8.8.8
+```
+
+However, DNS resolution testing with:
+
+```
+nslookup google.com
+```
+
+returned:
+
+```
+*** Unknown can't find google.com: No response from server
+```
+
+#### Analysis
+
+This indicates that basic network connectivity was functional, but DNS name resolution experienced issues communicating with the configured DNS server.
+
+#### Troubleshooting Performed
+
+- Verified IPv4 connectivity
+- Reviewed configured DNS servers using `ipconfig /all`
+- Tested external connectivity with ICMP
+- Confirmed issue was isolated to DNS resolution
+
+#### Lesson Learned
+
+Successful network connectivity does not always guarantee successful DNS resolution. Troubleshooting should isolate connectivity issues from name resolution failures.
 
 ---
 

@@ -94,15 +94,15 @@ Successful network connectivity does not always guarantee successful DNS resolut
 - User was able to access it previously
 
 ### Tools Used
-- `ping` — verify network connectivity to file server
-- `nslookup` — confirm DNS resolution of server hostname
-- Windows Credential Manager — check stored credentials
-- Active Directory Users and Computers — verify group membership and permissions
-- Event Viewer — check for authentication or access errors
-- `net use` — view and manage mapped network drives
+- `ping` : verify network connectivity to file server
+- `nslookup` : confirm DNS resolution of server hostname
+- Windows Credential Manager : check stored credentials
+- Active Directory Users and Computers : verify group membership and permissions
+- Event Viewer : check for authentication or access errors
+- `net use` : view and manage mapped network drives
 
 ### Troubleshooting Steps
-1. Confirm the shared path is correct — ask user for exact path they are using
+1. Confirm the shared path is correct : ask user for exact path they are using
 2. Run `ping <server hostname>` : verify network connectivity to file server
 3. Run `nslookup <server hostname>` : confirm DNS is resolving correctly
 4. Try accessing the share via IP address instead of hostname — isolates DNS vs. access issue
@@ -118,16 +118,16 @@ Successful network connectivity does not always guarantee successful DNS resolut
 **Problem:** User received "Access Denied" on a previously accessible shared network folder.
 
 **Investigation:**
-- Pinged file server — successful, confirmed network connectivity intact
-- Attempted access via IP — same "Access Denied" error, ruled out DNS issue
-- Checked Active Directory — user had been removed from the `FinanceTeam` security group during a routine quarterly access review
+- Pinged file server : successful, confirmed network connectivity intact
+- Attempted access via IP : same "Access Denied" error, ruled out DNS issue
+- Checked Active Directory : user had been removed from the `FinanceTeam` security group during a routine quarterly access review
 - Confirmed share and NTFS permissions were correctly configured for the group
 
 **Root Cause:** User was inadvertently removed from the Active Directory security group controlling access to the shared folder during a quarterly access review process.
 
 **Resolution:** Re-added user to the `FinanceTeam` AD security group. User logged off and back on to refresh group membership token. Share access restored within 5 minutes.
 
-**Preventive Action:** Flagged access review process for improvement — recommended a verification step before removing users from production groups. Documented in ServiceNow and escalated recommendation to IT manager.
+**Preventive Action:** Flagged access review process for improvement ; recommended a verification step before removing users from production groups. Documented in ServiceNow and escalated recommendation to IT manager.
 
 ### Business Impact
 Loss of access to shared financial documents prevented the user from completing time-sensitive reporting tasks. Swift resolution within SLA avoided escalation to management. Process improvement recommendation submitted to reduce recurrence risk across the team.

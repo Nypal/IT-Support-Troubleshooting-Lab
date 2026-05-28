@@ -1,5 +1,13 @@
 # IT Support Troubleshooting Lab
 
+## Role Alignment
+This lab aligns with IT Support Engineer / OpsTech IT responsibilities, including:
+- Network troubleshooting - DNS, DHCP, TCP/IP diagnostics
+- Root Cause Analysis
+- Incident documentation
+- High-availability user support
+- ServiceNow-style ticket handling
+
 ## Objective
 Document production helpdesk troubleshooting scenarios for Windows, networking, Linux, and user support — demonstrating the diagnostic methodology, root cause analysis, and remediation process used in enterprise IT environments.
 
